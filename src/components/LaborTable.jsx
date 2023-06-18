@@ -5,10 +5,8 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
-import { CircularProgress, Grid, Hidden, Typography } from "@mui/material";
+import { CircularProgress, Typography } from "@mui/material";
 import { Box } from "@mui/system";
-import { hover } from "@testing-library/user-event/dist/hover";
 
 const CustomTabelCell = ({ status, data }) => (
   <TableCell
@@ -34,26 +32,25 @@ const CustomTabelCell = ({ status, data }) => (
           : "black"
       }`,
       textAlign: "center",
-      fontSize: "12px",
+      fontSize: "13px",
       whiteSpace: "nowrap",
 
-      width: "auto",
+      width: 0,
       tableLayout: "auto",
     }}
   >
     <Typography
-      // title={ i === 0||i===1?data:null}
       sx={{
         fontSize: "13.4px",
         overflow: "hidden",
         textOverflow: "ellipsis",
         width: "200px",
-        // width:`${i===0|| i===1?'200px':null}`
+
         "&:hover": {
           overflow: "visible",
           whiteSpace: "normal",
           cursor: "default",
-          color: "royalblue",
+          color: "#00008B",
         },
       }}
     >
@@ -87,8 +84,7 @@ const CustomTabelCells = ({ status, data }) => (
       textAlign: "center",
       fontSize: "11px",
       whiteSpace: "nowrap",
-
-      width: "5px",
+      width: 0,
       tableLayout: "auto",
     }}
   >
@@ -189,11 +185,16 @@ export default function LaborTable({ laborData }) {
         border: "1px solid black",
       }}
     >
-      <Table aria-label="simple table" size="small">
+      <Table
+        aria-label="simple table"
+        size="small"
+        sx={{ position: "sticky", left: 0 }}
+      >
         <TableHead>
           <TableRow
             style={{
               position: "sticky",
+
               left: 0,
               zIndex: 1,
               top: 0,
@@ -204,6 +205,9 @@ export default function LaborTable({ laborData }) {
             <TableCell
               colSpan="4"
               sx={{
+                position: "sticky",
+                left: 0,
+                zIndex: 1,
                 backgroundColor: "#3f51b5",
                 textAlign: "center",
                 fontWeight: "bold",
@@ -279,6 +283,25 @@ export default function LaborTable({ laborData }) {
               <TableCell
                 key={index}
                 sx={{
+                  position: "sticky",
+                  left: `${
+                    index === 0
+                      ? "0px"
+                      : index === 1
+                      ? "233px"
+                      : index === 2
+                      ? "465px"
+                      : index === 3
+                      ? "500px"
+                      : index === 4
+                      ? "600px"
+                      : index === 5
+                      ? "660px"
+                      : index === 6
+                      ? "780px"
+                      : null
+                  }`,
+                  zIndex: 1,
                   borderLeft: "1px solid black",
                   backgroundColor: "#ECEEF8",
                   fontWeight: index === 6 ? 600 : "normal",
@@ -400,6 +423,26 @@ export default function LaborTable({ laborData }) {
                   row.status,
                 ].map((data, index) => (
                   <CustomTabelCells
+                    sx={{
+                      position: "sticky",
+                      left: `${
+                        index === 0
+                          ? "0px"
+                          : index === 1
+                          ? "233px"
+                          : index === 2
+                          ? "466px"
+                          : index === 3
+                          ? "500px"
+                          : index === 4
+                          ? "600px"
+                          : index === 5
+                          ? "670px"
+                          : index === 6
+                          ? "938px"
+                          : null
+                      }`,
+                    }}
                     key={index}
                     status={row.status}
                     data={data}
